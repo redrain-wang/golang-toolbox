@@ -111,7 +111,17 @@ func GetWeekThOfYear() int {
 
 // 获取本月第一天的日期
 func GetFirstDayDateOfMonth() string {
-	return time.Now().AddDate(0, 0, -time.Now().Day()+1).Format("2006-01-02")
+	return time.Date(GetNow().Year(), GetNow().Month(), 1, 0, 0, 0, 0, GetNow().Location()).Format("2006-01-02")
+}
+
+// 获取本月最后一天的日期
+func GetLastDayDateOfMonth() string {
+	return time.Date(GetNow().Year(), GetNow().Month(), 1, 0, 0, 0, 0, GetNow().Location()).AddDate(0, 1, -1).Format("2006-01-02")
+}
+
+// 获取本月有多少天
+func GetDayCountsOfMonth() int {
+	return time.Date(GetNow().Year(), GetNow().Month(), 1, 0, 0, 0, 0, GetNow().Location()).AddDate(0, 1, -1).Day()
 }
 
 // 获取本月第一天的星期

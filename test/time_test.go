@@ -23,6 +23,8 @@ func TestTime(t *testing.T) {
 	fmt.Println(tt.GetFirstWeekDayCountsOfYear())
 	fmt.Println(tt.GetWeekThOfYear())
 	fmt.Println(tt.GetFirstDayDateOfMonth())
+	fmt.Println(tt.GetLastDayDateOfMonth())
+	fmt.Println(tt.GetDayCountsOfMonth())
 	fmt.Println(tt.GetFirstDayWeekOfMonth())
 	fmt.Println(tt.GetFirstWeekDayCountsOfMonth())
 	fmt.Println(tt.GetWeekThOfMonth())
