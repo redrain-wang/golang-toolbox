@@ -1,8 +1,6 @@
-package time_tool
+package timeTool
 
 import (
-	"fmt"
-	"testing"
 	"time"
 )
 
@@ -135,26 +133,4 @@ func GetWeekThOfMonth() int {
 		return 1
 	}
 	return (GetNow().Day()-GetFirstWeekDayCountsOfMonth())/7 + 2
-}
-
-func TestTime(t *testing.T) {
-	fmt.Println(GetNowString())
-	fmt.Println(GetTodayDate())
-	fmt.Println(GetCurrentTime())
-	fmt.Println(GetTimestampSecond())
-	fmt.Println(GetTimestampMill())
-	fmt.Println(GetTimestampMico())
-	fmt.Println(GetTimeStampNano())
-	fmt.Println(GetThDayInYear())
-	fmt.Println(GetThDayInMonth())
-	fmt.Println(GetWeekEnglish())
-	fmt.Println(GetWeekInt())
-	fmt.Println(GetWeekChina())
-	fmt.Println(GetFirstDayWeekOfYear())
-	fmt.Println(GetFirstWeekDayCountsOfYear())
-	fmt.Println(GetWeekThOfYear())
-	fmt.Println(GetFirstDayDateOfMonth())
-	fmt.Println(GetFirstDayWeekOfMonth())
-	fmt.Println(GetFirstWeekDayCountsOfMonth())
-	fmt.Println(GetWeekThOfMonth())
 }
