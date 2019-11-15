@@ -9,6 +9,100 @@ func GetNow() time.Time {
 	return time.Now()
 }
 
+// 将给定的完整日期时间字符串转化为golang的Time
+func TransTimeStringToGoTime(timeString string) time.Time {
+	goTime, err := time.Parse("2006-01-02 15:04:05", timeString)
+	if err == nil {
+		return goTime
+	}
+	return GetNow()
+}
+
+// 以给定的格式字符串返回go的Time
+func TransTimeStringByFormatToGoTime(formatString, timeString string) time.Time {
+	goTime, err := time.Parse(formatString, timeString)
+	if err == nil {
+		return goTime
+	}
+	return GetNow()
+}
+
+// 获取当前年
+func GetYear() int {
+	return GetNow().Year()
+}
+
+// 获取当前月 英文全拼
+func GetMonthString() string {
+	return GetNow().Month().String()
+}
+
+// 获取当前月 阿拉伯数字
+func GetMonthNumber() int {
+	return int(GetNow().Month())
+}
+
+// 获取当前月的中文描述
+func GetMonthChina() string {
+	return GetMonthChinaByNum(GetMonthNumber())
+}
+
+// 获取给定月的中文描述 一月 二月
+func GetMonthChinaByNum(num int) string {
+	if num > 12 || num <= 0 {
+		return "month error"
+	}
+	monthMap := make(map[int]string, 12)
+	monthMap[1] = "一月"
+	monthMap[2] = "二月"
+	monthMap[3] = "三月"
+	monthMap[4] = "四月"
+	monthMap[5] = "五月"
+	monthMap[6] = "六月"
+	monthMap[7] = "七月"
+	monthMap[8] = "八月"
+	monthMap[9] = "九月"
+	monthMap[10] = "十月"
+	monthMap[11] = "十一月"
+	monthMap[12] = "十二月"
+	return monthMap[num]
+}
+
+// 获取当前日期的日
+func GetDay() int {
+	return GetNow().Day()
+}
+
+// 获取当前时间的小时
+func GetHour() int {
+	return GetNow().Hour()
+}
+
+// 获取当前时间的分钟
+func GetMinute() int {
+	return GetNow().Minute()
+}
+
+// 获取当前时间秒
+func GetSecond() int {
+	return GetNow().Second()
+}
+
+// 获取当前纳秒
+func GetNanoSecond() int {
+	return GetNow().Nanosecond()
+}
+
+// 获取当前毫秒
+func GetMillSecond() int {
+	return GetNanoSecond() / 1e6
+}
+
+// 获取当前微秒
+func GetMicroSecond() int {
+	return GetNanoSecond() / 1e3
+}
+
 // 获取当前日期和时间 格式 2019-01-01 10：10：10
 func GetNowString() string {
 	return time.Now().Format("2006-01-02 15:04:05")

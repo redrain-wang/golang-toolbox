@@ -8,6 +8,19 @@ import (
 
 func TestTime(t *testing.T) {
 	fmt.Println(tbox.GetNowString())
+	fmt.Println(tbox.TransTimeStringToGoTime("2019-11-15 11:17:23"))
+	fmt.Println(tbox.TransTimeStringByFormatToGoTime("2006-01-02 15:04", "2019-11-15 11:17"))
+	fmt.Println(tbox.GetYear())
+	fmt.Println(tbox.GetMonthString())
+	fmt.Println(tbox.GetMonthNumber())
+	fmt.Println(tbox.GetMonthChina())
+	fmt.Println(tbox.GetMonthChinaByNum(int(tbox.GetMonthNumber())))
+	fmt.Println(tbox.GetDay())
+	fmt.Println(tbox.GetHour())
+	fmt.Println(tbox.GetMinute())
+	fmt.Println(tbox.GetSecond())
+	fmt.Println(tbox.GetMillSecond())
+	fmt.Println(tbox.GetNanoSecond())
 	fmt.Println(tbox.GetTodayDate())
 	fmt.Println(tbox.GetCurrentTime())
 	fmt.Println(tbox.GetTimestampSecond())
@@ -28,10 +41,4 @@ func TestTime(t *testing.T) {
 	fmt.Println(tbox.GetFirstDayWeekOfMonth())
 	fmt.Println(tbox.GetFirstWeekDayCountsOfMonth())
 	fmt.Println(tbox.GetWeekThOfMonth())
-}
-
-func TestSlice(t *testing.T) {
-	slice1 := []int{1, 2, 3, 4, 5, 6, 7}
-	t.Log(tbox.InArray(slice1, 2))  // true
-	t.Log(tbox.InArray(slice1, 11)) // false
 }
