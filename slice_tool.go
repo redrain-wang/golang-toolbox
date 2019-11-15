@@ -11,9 +11,9 @@ func InArray(array interface{}, item interface{}) bool {
 
 	size := values.Len()
 	list := make([]interface{}, size)
-	slice := values.Slice(0, size)
 	for index := 0; index < size; index++ {
-		list[index] = slice.Index(index).Interface()
+		//转换为Interface类型
+		list[index] = values.Index(index).Interface()
 	}
 
 	for index := 0; index < len(list); index++ {
