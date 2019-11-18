@@ -1,6 +1,7 @@
 package toolbox
 
 import (
+	"fmt"
 	"time"
 )
 
@@ -18,7 +19,7 @@ func TransTimeStringToGoTime(timeString string) time.Time {
 	return GetNow()
 }
 
-// 以给定的格式字符串返回go的Time
+// 以给定的格式字符串返回go的Time类型的时间
 func TransTimeStringByFormatToGoTime(formatString, timeString string) time.Time {
 	goTime, err := time.Parse(formatString, timeString)
 	if err == nil {
@@ -30,6 +31,21 @@ func TransTimeStringByFormatToGoTime(formatString, timeString string) time.Time 
 // 获取当前年
 func GetYear() int {
 	return GetNow().Year()
+}
+
+// 获取定日期得年份
+func GetYearByFormatTime(formatString, timeString string) int {
+	return TransTimeStringByFormatToGoTime(formatString, timeString).Year()
+}
+
+//获取当前年 2019年
+func GetYearString() string {
+	return fmt.Sprintf("%d年", GetNow().Year())
+}
+
+// 获取定日期得年份
+func GetYearStringByFormatTime(formatString, timeString string) string {
+	return fmt.Sprintf("%d年", GetYearByFormatTime(formatString, timeString))
 }
 
 // 获取当前月 英文全拼
@@ -237,4 +253,117 @@ func GetWeekThOfMonth() int {
 		return 1
 	}
 	return (GetNow().Day()-GetFirstWeekDayCountsOfMonth())/7 + 2
+}
+
+// 将当前的时间加指定的天数
+func GetCurrentTimeAddDays(days int) string {
+	return GetNow().AddDate(0,0,1).Format("2006-01-02 15:04:05")
+}
+
+func GetCurrentTimeAddMonths(months int) string {
+	return GetNow().AddDate(0, months, 0).Format("2006-01-02 15:04:05")
+}
+
+// 将当前时间加指定时间返回秒数
+func GetCurrentTimeAddSeconds(seconds int64) int64 {
+	return GetNow().Unix() + seconds
+}
+
+// 将当前时间添加指定秒数返回时间字符串
+func GetCurrentTimeAddSecondsString(seconds int64) string {
+	return GetTimeStringByUnixTime(GetCurrentTimeAddSeconds(seconds))
+}
+
+// 将给定时间戳转化为时间
+func GetTimeStringByUnixTime(unixTime int64) string {
+	return time.Unix(unixTime, 0).Format("2006-01-02 15:04:05")
+}
+
+// 获取两个时间相差的秒数 time1 - time2
+func GetTimeDiffSecond(time1, time2 string) int64 {
+	return TransTimeStringToGoTime(time1).Unix() - TransTimeStringToGoTime(time2).Unix()
+}
+
+// 获取两个时间相差分钟数
+func GetTimeDiffMinute(time1, time2 string) float64 {
+	return Float64TwoPointFloat(float64(GetTimeDiffSecond(time1, time2)) / 60)
+}
+
+// 是否是星期日
+func IsSunday() bool{
+	if int(GetNow().Weekday()) == 0 {
+		return true
+	}
+	return false
+}
+
+// 是否是星期一
+func IsMonday() bool{
+	if int(GetNow().Weekday()) == 1 {
+		return true
+	}
+	return false
+}
+
+// 是否星期二
+func IsTuesday() bool{
+	if int(GetNow().Weekday()) == 2 {
+		return true
+	}
+	return false
+}
+// 是否星期三
+func IsWednesday() bool {
+	if int(GetNow().Weekday()) == 3 {
+		return true
+	}
+	return false
+}
+
+// 是否星期四
+func IsThursday() bool {
+	if int(GetNow().Weekday()) == 4 {
+		return true
+	}
+	return false
+}
+
+// 是否星期五
+func IsFriday() bool {
+	if int(GetNow().Weekday()) == 5 {
+		return true
+	}
+	return false
+}
+
+// 是否星期六
+func IsSaturday() bool{
+	if int(GetNow().Weekday()) == 6 {
+		return true
+	}
+	return false
+}
+
+// 是否是当前年
+func IsCurrentYear(date string) bool {
+	if GetNow().Year() == TransTimeStringToGoTime(date).Year() {
+		return true
+	}
+	return false
+}
+
+// 是否是去年
+func IsLastYear(date string) bool {
+	if GetNow().Year() -1  == TransTimeStringToGoTime(date).Year() {
+		return true
+	}
+	return false
+}
+
+// 是否是明年
+func IsNextYear(date string) bool {
+	if GetNow().Year() + 1  == TransTimeStringToGoTime(date).Year() {
+		return true
+	}
+	return false
 }

@@ -6,11 +6,15 @@ import (
 	"testing"
 )
 
+// all time tools function example
 func TestTime(t *testing.T) {
 	fmt.Println(tbox.GetNowString())
 	fmt.Println(tbox.TransTimeStringToGoTime("2019-11-15 11:17:23"))
 	fmt.Println(tbox.TransTimeStringByFormatToGoTime("2006-01-02 15:04", "2019-11-15 11:17"))
 	fmt.Println(tbox.GetYear())
+	fmt.Println(tbox.GetYearByFormatTime("2006-01-02 15:04", "2019-11-15 11:17"))
+	fmt.Println(tbox.GetYearStringByFormatTime("2006-01-02 15:04:05", "2008-08-08 08:08:08"))
+	fmt.Println(tbox.GetYearString())
 	fmt.Println(tbox.GetMonthString())
 	fmt.Println(tbox.GetMonthNumber())
 	fmt.Println(tbox.GetMonthChina())
@@ -41,4 +45,11 @@ func TestTime(t *testing.T) {
 	fmt.Println(tbox.GetFirstDayWeekOfMonth())
 	fmt.Println(tbox.GetFirstWeekDayCountsOfMonth())
 	fmt.Println(tbox.GetWeekThOfMonth())
+	fmt.Println(tbox.GetCurrentTimeAddDays(1))
+	fmt.Println(tbox.GetCurrentTimeAddSeconds(3600))
+	fmt.Println(tbox.GetCurrentTimeAddSecondsString(3600))
+	fmt.Println(tbox.GetCurrentTimeAddMonths(2))
+	fmt.Println(tbox.GetTimeStringByUnixTime(tbox.GetNow().Unix()))
+	fmt.Println(tbox.GetTimeDiffSecond(tbox.GetNowString(), "2019-01-01 11:57:20"))
+	fmt.Println(tbox.GetTimeDiffMinute(tbox.GetNowString(), "2019-01-01 11:57:20"))
 }
