@@ -10,3 +10,4 @@ func TestSlice(t *testing.T) {
 	t.Log(tbox.InArray(slice1, 2))  // true
 	t.Log(tbox.InArray(slice1, 11)) // false
 }
+

@@ -28,8 +28,13 @@ func Float64TwoPointFloat(number float64) float64 {
 		return 0
 	}
 	numberString := fmt.Sprintf("%.2f", number)
-	number , _ = strconv.ParseFloat(numberString, 64)
+	number, _ = strconv.ParseFloat(numberString, 64)
 	return number
 }
 
-//
+// 十进制int 转换为二进制int
+func DecimalToBinary(number int64) int64 {
+	numberString := fmt.Sprintf("%d", number)
+	number, _ = strconv.ParseInt(numberString, 10, 64)
+	return number
+}
