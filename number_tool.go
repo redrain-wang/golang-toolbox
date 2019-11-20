@@ -6,7 +6,7 @@ import (
 )
 
 // float64保留两位小数 四舍五入 返回字符串
-func Float64TwoPoint(number float64) string{
+func Float64TwoPoint(number float64) string {
 	if number == 0 {
 		return "0"
 	}
@@ -14,7 +14,7 @@ func Float64TwoPoint(number float64) string{
 }
 
 // 字符串数字转float64
-func StringNumberTransToFloat(numberString string) float64{
+func StringNumberTransToFloat(numberString string) float64 {
 	if numberString == "" {
 		return 0
 	}
@@ -28,6 +28,13 @@ func Float64TwoPointFloat(number float64) float64 {
 		return 0
 	}
 	numberString := fmt.Sprintf("%.2f", number)
+	number, _ = strconv.ParseFloat(numberString, 64)
+	return number
+}
+
+// float64保留指定位数，返回float
+func Float64Round(number float64, n int) float64 {
+	numberString := fmt.Sprintf("%0."+strconv.Itoa(n)+"f", number)
 	number, _ = strconv.ParseFloat(numberString, 64)
 	return number
 }
