@@ -45,3 +45,17 @@ func DecimalToBinary(number int64) int64 {
 	number, _ = strconv.ParseInt(numberString, 10, 64)
 	return number
 }
+// 将分转化为元
+func GetYuanByFen(num int) float64{
+	return Float64TwoPointFloat(float64(num) / 100)
+}
+
+// 将元转化为分
+func GetFenByYuan(num float64) int {
+	return int(num * 100)
+}
+
+
+
+
+
