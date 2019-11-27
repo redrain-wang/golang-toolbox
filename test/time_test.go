@@ -9,6 +9,7 @@ import (
 // all time tools function example
 func TestTime(t *testing.T) {
 	fmt.Println(tbox.GetNowString())
+	fmt.Println(tbox.GetTimeZone())
 	fmt.Println(tbox.TransTimeStringToGoTime("2019-11-15 11:17:23"))
 	fmt.Println(tbox.TransTimeStringByFormatToGoTime("2006-01-02 15:04", "2019-11-15 11:17"))
 	fmt.Println(tbox.GetYear())
@@ -39,6 +40,7 @@ func TestTime(t *testing.T) {
 	fmt.Println(tbox.GetFirstDayWeekOfYear())
 	fmt.Println(tbox.GetFirstWeekDayCountsOfYear())
 	fmt.Println(tbox.GetWeekThOfYear())
+	fmt.Println(tbox.GetWeekThOfYearByTime(tbox.TransTimeStringToGoTime("2019-01-01 11:17:23")))
 	fmt.Println(tbox.GetFirstDayDateOfMonth())
 	fmt.Println(tbox.GetLastDayDateOfMonth())
 	fmt.Println(tbox.GetDayCountsOfMonth())
@@ -52,4 +54,14 @@ func TestTime(t *testing.T) {
 	fmt.Println(tbox.GetTimeStringByUnixTime(tbox.GetNow().Unix()))
 	fmt.Println(tbox.GetTimeDiffSecond(tbox.GetNowString(), "2019-01-01 11:57:20"))
 	fmt.Println(tbox.GetTimeDiffMinute(tbox.GetNowString(), "2019-01-01 11:57:20"))
+	fmt.Println(tbox.IsMonday())
+	fmt.Println(tbox.IsTuesday())
+	fmt.Println(tbox.IsWednesday())
+	fmt.Println(tbox.IsThursday())
+	fmt.Println(tbox.IsFriday())
+	fmt.Println(tbox.IsSaturday())
+	fmt.Println(tbox.IsCurrentYear("2019-11-27 12:12:12"))
+	fmt.Println(tbox.IsLastYear("2019-11-27 12:12:12"))
+	fmt.Println(tbox.IsNextYear("2019-11-27 12:12:12"))
+
 }

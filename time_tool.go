@@ -10,6 +10,11 @@ func GetNow() time.Time {
 	return time.Now()
 }
 
+// 获取时区
+func GetTimeZone() string {
+	zone,_ := time.Now().Zone()
+	return zone
+}
 // 将给定的完整日期时间字符串转化为golang的Time
 func TransTimeStringToGoTime(timeString string) time.Time {
 	goTime, err := time.Parse("2006-01-02 15:04:05", timeString)
@@ -33,7 +38,7 @@ func GetYear() int {
 	return GetNow().Year()
 }
 
-// 获取定日期得年份
+// 获取给定日期得年份
 func GetYearByFormatTime(formatString, timeString string) int {
 	return TransTimeStringByFormatToGoTime(formatString, timeString).Year()
 }
@@ -217,6 +222,25 @@ func GetWeekThOfYear() int {
 		return 1
 	}
 	return (yearTh-GetFirstWeekDayCountsOfYear())/7 + 2
+}
+
+// 获取指定日期是第几周
+func GetWeekThOfYearByTime(goTime time.Time) (week int) {
+	l, _ := time.LoadLocation("Asia/Shanghai")
+	tt, _ := time.ParseInLocation("2006-01-02", goTime.Format("2006-01-02"), l)
+	yearDay := tt.YearDay()
+	yearFirstDay := tt.AddDate(0, 0, -yearDay+1)
+	firstDayInWeek := int(yearFirstDay.Weekday()) //星期日是0
+	firstWeekDays := 1
+	if firstDayInWeek != 0 {
+		firstWeekDays = 7 - firstDayInWeek + 1
+	}
+	if yearDay <= firstWeekDays {
+		week = 1
+	} else {
+		week = (yearDay-firstWeekDays)/7 + 2
+	}
+	return
 }
 
 // 获取本月第一天的日期
