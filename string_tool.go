@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+	"unicode/utf8"
 )
 
 // 获取变量类型
@@ -13,7 +14,7 @@ func GetType(value interface{}) string {
 
 // 字符串转换为int
 func StringToInt(str string) int {
-	number,_ := strconv.Atoi(str)
+	number, _ := strconv.Atoi(str)
 	return number
 }
 
@@ -25,7 +26,7 @@ func IntToString(number int) string {
 
 // string转换为bool
 func StringToBool(str string) bool {
-	result,_ := strconv.ParseBool(str)
+	result, _ := strconv.ParseBool(str)
 	return result
 }
 
@@ -82,7 +83,7 @@ func StringTrimPrefix(str, prefix string) string {
 
 // 判断两个字符串是否完全相等 区分大小写
 func StringCompare(str1, str2 string) bool {
-	if strings.Compare(str1, str2) == 0{
+	if strings.Compare(str1, str2) == 0 {
 		return true
 	}
 	return false
@@ -96,12 +97,12 @@ func StringICompare(str1, str2 string) bool {
 }
 
 // 将给定的字符串用空白符分割为切片
-func StringField(str string) []string{
+func StringField(str string) []string {
 	return strings.Fields(str)
 }
 
 // 判断给定字符串是否是以指定的字符开头的
-func StringPrefix(haystack ,prefix string) bool {
+func StringPrefix(haystack, prefix string) bool {
 	return strings.HasPrefix(haystack, prefix)
 }
 
@@ -116,7 +117,7 @@ func StringJoin(v []string, sep string) string {
 }
 
 //string 转化为slice
-func StringSlice(str,sep string) []string {
+func StringSlice(str, sep string) []string {
 	return strings.Split(str, sep)
 }
 
@@ -136,7 +137,7 @@ func StringReplace(str, old, new string, number int) string {
 }
 
 // 首字母大写
-func StringUcFirst(str string) string  {
+func StringUcFirst(str string) string {
 	return strings.Title(str)
 }
 
@@ -151,7 +152,12 @@ func StringToLower(str string) string {
 }
 
 // 将无效的UTF8字节序列替换为 给定的字符串
-func  StringValidUTF8(str1, str2 string) string {
+func StringValidUTF8(str1, str2 string) string {
 	return strings.ToValidUTF8(str1, str2)
 }
 
+// 获取utf8字符串长度
+
+func StringLen(str string) int {
+	return utf8.RuneCountInString(str)
+}
