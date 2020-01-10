@@ -2,7 +2,9 @@ package toolbox
 
 import (
 	"fmt"
+	"math/rand"
 	"strconv"
+	"time"
 )
 
 // float64保留两位小数 四舍五入 返回字符串
@@ -45,8 +47,9 @@ func DecimalToBinary(number int64) int64 {
 	number, _ = strconv.ParseInt(numberString, 10, 64)
 	return number
 }
+
 // 将分转化为元
-func GetYuanByFen(num int) float64{
+func GetYuanByFen(num int) float64 {
 	return Float64TwoPointFloat(float64(num) / 100)
 }
 
@@ -55,7 +58,8 @@ func GetFenByYuan(num float64) int {
 	return int(num * 100)
 }
 
-
-
-
-
+// 获取指定范围的随机数字
+func GetRandRangeNumber(min, max int) int {
+	rand.Seed(time.Now().UnixNano())
+	return rand.Intn(max-min) + min
+}

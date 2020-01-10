@@ -25,7 +25,10 @@ func IntToString(number int) string {
 }
 
 // int转换为 string 类型 并指定进制
-func FormatInt(number int64, base int) string {
+func StringFormatInt(number int64, base int) string {
+	if base < 2 || base > 36 {
+		panic("base range 2 and 36")
+	}
 	return strconv.FormatInt(number, base)
 }
 
@@ -75,10 +78,12 @@ func StringLastIndex(haystack, needle string) int {
 func StringTrim(str string, tag string) string {
 	return strings.Trim(str, tag)
 }
+
 // 替换字符串两边空格
-func StringTrimSpace( str string) string {
+func StringTrimSpace(str string) string {
 	return strings.TrimSpace(str)
 }
+
 // 去除左侧空格
 func StringTrimLeft(str string) string {
 	return strings.TrimLeft(str, " ")
