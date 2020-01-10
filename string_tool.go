@@ -24,6 +24,11 @@ func IntToString(number int) string {
 	return str
 }
 
+// int转换为 string 类型 并指定进制
+func FormatInt(number int64, base int) string {
+	return strconv.FormatInt(number, base)
+}
+
 // string转换为bool
 func StringToBool(str string) bool {
 	result, _ := strconv.ParseBool(str)
@@ -39,6 +44,11 @@ func StringToFloat64(str string) float64 {
 // float转换为 string 保留两位小数
 func FloatToString(number float64) string {
 	return fmt.Sprintf("%.2f", number)
+}
+
+// float转换为字符串 保留指定位数 会自动四舍五入
+func FormatFloat(number float64, prec int) string {
+	return strconv.FormatFloat(number, 'f', prec, 64)
 }
 
 // 查找某个字符或串是否包含在给定的字符串里
@@ -62,10 +72,13 @@ func StringLastIndex(haystack, needle string) int {
 }
 
 // 去除字符两边空格
-func StringTrim(str string) string {
-	return strings.Trim(str, " ")
+func StringTrim(str string, tag string) string {
+	return strings.Trim(str, tag)
 }
-
+// 替换字符串两边空格
+func StringTrimSpace( str string) string {
+	return strings.TrimSpace(str)
+}
 // 去除左侧空格
 func StringTrimLeft(str string) string {
 	return strings.TrimLeft(str, " ")
@@ -157,7 +170,6 @@ func StringValidUTF8(str1, str2 string) string {
 }
 
 // 获取utf8字符串长度
-
 func StringLen(str string) int {
 	return utf8.RuneCountInString(str)
 }

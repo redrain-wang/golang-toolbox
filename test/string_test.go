@@ -19,7 +19,7 @@ func TestString(t *testing.T) {
 	fmt.Println(tbox.StringCounts("hello world hello golang", "o"))    //4
 	fmt.Println(tbox.StringIndex("hello world hello golang", "w"))     //6, 不存在返回-1
 	fmt.Println(tbox.StringLastIndex("hello world hello golang", "g")) //23, 不存在返回-1
-	fmt.Printf("%d,%d\n", len("  golang  "), len(tbox.StringTrim("  golang  ")))
+	fmt.Printf("%d,%d\n", len("  golang  "), len(tbox.StringTrim("aagolangaa", "aa")))
 	fmt.Printf("%d,%d\n", len("  golang  "), len(tbox.StringTrimLeft("  golang  ")))
 	fmt.Printf("%d,%d\n", len("  golang  "), len(tbox.StringTrimRight("  golang  ")))
 	fmt.Printf("%d,%d\n", len("fffgolangfff"), len(tbox.StringTrimPrefix("fffgolangfff", "fff"))) //去掉开头的fff
