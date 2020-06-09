@@ -2,6 +2,7 @@ package toolbox
 
 import (
 	"fmt"
+	"math"
 	"math/rand"
 	"strconv"
 	"time"
@@ -62,4 +63,9 @@ func GetFenByYuan(num float64) int {
 func GetRandRangeNumber(min, max int) int {
 	rand.Seed(time.Now().UnixNano())
 	return rand.Intn(max-min) + min
+}
+
+// float64转int 结果四舍五入
+func Float64ToInt(num float64) int {
+	return int(math.Round(num))
 }
